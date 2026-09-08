@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Salomon Rosariyo</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #050816;
+            color: white;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           ANIMATED BACKGROUND
+        ========================== */
+
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(
+                135deg,
+                #050816,
+                #111827,
+                #1e1b4b
+            );
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(5px);
+            opacity: 0.5;
+            animation: float 8s infinite ease-in-out;
+        }
+
+        .circle1 {
+            width: 250px;
+            height: 250px;
+            background: #2563eb;
+            top: 10%;
+            left: 5%;
+        }
+
+        .circle2 {
+            width: 300px;
+            height: 300px;
+            background: #9333ea;
+            bottom: 10%;
+            right: 5%;
+            animation-delay: 2s;
+        }
+
+        .circle3 {
+            width: 150px;
+            height: 150px;
+            background: #ec4899;
+            top: 50%;
+            left: 45%;
+            animation-delay: 4s;
+        }
+
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+
+            50% {
+                transform: translateY(-50px) translateX(30px);
+            }
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================== */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 20px 10%;
+
+            background: rgba(5, 8, 22, 0.75);
+            backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+
+            animation: navSlide 1s ease;
+        }
+
+
+        @keyframes navSlide {
+
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+        }
+
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #60a5fa;
+
+            animation: logoGlow 2s infinite alternate;
+        }
+
+
+        @keyframes logoGlow {
+
+            from {
+                text-shadow: 0 0 5px #2563eb;
+            }
+
+            to {
+                text-shadow:
+                    0 0 10px #60a5fa,
+                    0 0 25px #2563eb;
+            }
+
+        }
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            position: relative;
+        }
+
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+
+            width: 0;
+            height: 2px;
+
+            background: #60a5fa;
+
+            transition: 0.3s;
+        }
+
+
+        nav a:hover {
+            color: #60a5fa;
+        }
+
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+
+        /* =========================
+           HERO SECTION
+        ========================== */
+
+        .hero {
+
+            min-height: 90vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+
+        .hero-content {
+
+            max-width: 850px;
+
+            animation: heroAppear 1.5s ease;
+        }
+
+
+        @keyframes heroAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        .hero h1 {
+
+            font-size: 70px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #60a5fa,
+                    #a78bfa,
+                    #f472b6,
+                    #60a5fa
+                );
+
+            background-size: 300%;
+
+            -webkit-background-clip: text;
+            color: transparent;
+
+            animation:
+                gradientMove 5s infinite linear,
+                titleFloat 3s infinite ease-in-out;
+        }
+
+
+        @keyframes gradientMove {
+
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+
+        }
+
+
+        @keyframes titleFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+        }
+
+
+        .hero h2 {
+
+            margin-top: 15px;
+
+            font-size: 28px;
+
+            color: #cbd5e1;
+
+            animation: fadeIn 2s ease;
+        }
+
+
+        .hero p {
+
+            margin-top: 20px;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #cbd5e1;
+
+            animation: fadeIn 2.5s ease;
+        }
+
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================== */
+
+        .btn {
+
+            display: inline-block;
+
+            margin-top: 30px;
+
+            padding: 15px 35px;
+
+            border-radius: 30px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #7c3aed,
+                    #ec4899
+                );
+
+            background-size: 200%;
+
+            box-shadow:
+                0 0 15px rgba(96,165,250,0.4);
+
+            transition: 0.4s;
+
+            animation:
+                buttonAppear 3s ease,
+                buttonGlow 2s infinite alternate;
+        }
+
+
+        @keyframes buttonAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes buttonGlow {
+
+            from {
+                box-shadow: 0 0 10px #2563eb;
+            }
+
+            to {
+                box-shadow:
+                    0 0 20px #7c3aed,
+                    0 0 40px #ec4899;
+            }
+
+        }
+
+
+        .btn:hover {
+
+            transform: scale(1.1);
+
+            background-position: 100%;
+
+        }
+
+
+        /* =========================
+           SECTIONS
+        ========================== */
+
+        .section {
+
+            padding: 100px 10%;
+
+            text-align: center;
+        }
+
+
+        .section h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 45px;
+
+            color: #93c5fd;
+
+            animation: headingPulse 3s infinite ease-in-out;
+        }
+
+
+        @keyframes headingPulse {
+
+            0%, 100% {
+                text-shadow: 0 0 5px transparent;
+            }
+
+            50% {
+                text-shadow: 0 0 20px #2563eb;
+            }
+
+        }
+
+
+        /* =========================
+           GLASS CARD
+        ========================== */
+
+        .card {
+
+            max-width: 750px;
+
+            margin: auto;
+
+            padding: 45px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.15);
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.4);
+
+            transition: 0.5s;
+
+            animation: cardAppear 1.5s ease;
+        }
+
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform: translateY(80px) scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+
+        }
+
+
+        .card:hover {
+
+            transform:
+                translateY(-15px)
+                scale(1.03);
+
+            border-color: #60a5fa;
+
+            box-shadow:
+                0 20px 60px
+                rgba(37,99,235,0.4);
+        }
+
+
+        .card p {
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            color: #cbd5e1;
+        }
+
+
+        /* =========================
+           SKILLS
+        ========================== */
+
+        .skills {
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 25px;
+        }
+
+
+        .skill {
+
+            padding: 25px 35px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            transition: 0.4s;
+
+            animation:
+                skillFloat 4s infinite ease-in-out;
+        }
+
+
+        .skill:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .skill:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .skill:nth-child(4) {
+            animation-delay: 1.5s;
+        }
+
+
+        @keyframes skillFloat {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+
+        }
+
+
+        .skill:hover {
+
+            transform:
+                scale(1.15)
+                rotate(3deg);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #7c3aed
+                );
+
+            box-shadow:
+                0 0 25px #2563eb;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        .contact p {
+
+            margin: 15px;
+
+            color: #cbd5e1;
+
+            font-size: 18px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+
+            padding: 30px;
+
+            text-align: center;
+
+            background:
+                rgba(0,0,0,0.4);
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           MOBILE DESIGN
+        ========================== */
+
+        @media (max-width: 600px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero h2 {
+                font-size: 21px;
+            }
+
+            .section {
+                padding: 70px 5%;
+            }
+
+            .section h2 {
+                font-size: 32px;
+            }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- Animated Background -->
+
+    <div class="background">
+
+        <div class="circle circle1"></div>
+
+        <div class="circle circle2"></div>
+
+        <div class="circle circle3"></div>
+
+    </div>
+
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            Salomon
+        </div>
+
+        <ul>
+
+            <li>
+                <a href="#home">Home</a>
+            </li>
+
+            <li>
+                <a href="#about">About</a>
+            </li>
+
+            <li>
+                <a href="#skills">Skills</a>
+            </li>
+
+            <li>
+                <a href="#contact">Contact</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- Hero -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>
+                Salomon Rosariyo
+            </h1>
+
+            <h2>
+                Welcome to My Website 🚀
+            </h2>
+
+            <p>
+                Hello! I'm Salomon Rosariyo.
+                <br>
+                This is my first personal website.
+                <br>
+                I'm learning HTML, CSS and Web Development.
+            </p>
+
+            <a href="#about" class="btn">
+                Explore My Website
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- About -->
+
+    <section class="section" id="about">
+
+        <h2>
+            About Me 👨‍💻
+        </h2>
+
+        <div class="card">
+
+            <p>
+
+                Hi! My name is
+                <strong>Salomon Rosariyo</strong>.
+
+                <br><br>
+
+                I am learning web development
+                and enjoy creating beautiful
+                and interactive websites.
+
+                <br><br>
+
+                This is my first website made
+                using HTML and CSS.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Skills -->
+
+    <section class="section" id="skills">
+
+        <h2>
+            My Skills 💻
+        </h2>
+
+        <div class="skills">
+
+            <div class="skill">
+                🌐 HTML
+            </div>
+
+            <div class="skill">
+                🎨 CSS
+            </div>
+
+            <div class="skill">
+                ⚡ JavaScript
+            </div>
+
+            <div class="skill">
+                💡 Web Design
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact -->
+
+    <section class="section" id="contact">
+
+        <h2>
+            Contact Me 📩
+        </h2>
+
+        <div class="card">
+
+            <p>
+                📧 Email:
+                your-salomonrosariyo10752@mountzion.ac.in
+            </p>
+
+            <p>
+                📱 Phone:
+                +91 85248 99678
+            </p>
+
+            <a
+                href="mailto:your-email@example.com"
+                class="btn">
+                Send Message
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Salomon Rosariyo
+            | Made with ❤️ using HTML & CSS
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
